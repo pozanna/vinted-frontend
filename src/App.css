@@ -1,0 +1,89 @@
+CSS a {
+  all: unset;
+}
+
+button {
+  all: unset;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+header {
+  display: flex;
+  justify-content: left;
+  height: 80px;
+  align-items: center;
+}
+
+.headerLogo img {
+  height: 40px;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+}
+
+form input {
+  width: 630px;
+  height: 35px;
+  background-color: #efefef;
+  border-color: transparent;
+  border-radius: 5px;
+  padding-left: 40px;
+  display: flex;
+  align-items: center;
+}
+
+form {
+  display: flex;
+  align-items: center;
+}
+
+.search-label {
+  position: relative;
+  padding: 0 20px;
+}
+
+.search-button {
+  position: absolute;
+  top: 0;
+  left: 0; /* Set left to 0 to move button to the inside left */
+  height: 100%;
+  padding: 0 20px;
+  background-color: #efefef;
+  border-radius: 5px;
+  border: none;
+  color: black;
+}
+
+.search-input {
+  padding-right: 0px;
+}
+
+.subscribeButton {
+  border-radius: 5px;
+  height: 28px;
+  width: 130px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #39b1ba;
+  color: #39b1ba;
+}
+.connectButton {
+  border-radius: 5px;
+  margin: 0 10px 0 10px;
+  height: 28px;
+  width: 130px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #39b1ba;
+  color: #39b1ba;
+}
+.sellButton {
+  border-radius: 5px;
+  background-color: #39b1ba;
+  margin: 0 10px 0 40px;
+  height: 28px;
+  width: 130px;
+  color: white;
+}

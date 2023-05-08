@@ -1,0 +1,77 @@
+.containerOffer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color: #eaedee;
+  height: 700px;
+}
+
+.productImageOffer {
+  width: 400px;
+  height: 600px;
+  padding: 50px 150px 50px 50px;
+}
+
+.whiteBoxOffer {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.whiteBoxAllInfo {
+  background-color: white;
+  margin-left: 50px;
+  margin-right: 50px;
+  padding: 5px 25px 25px 25px;
+}
+
+.offerPrice {
+  font-weight: bold;
+  font-size: 24px;
+  margin-bottom: 24px;
+}
+
+.productDetailsOffer {
+  margin-bottom: 12px;
+}
+
+.userInfoContainerOffer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-bottom: 25px;
+}
+
+.userInfoContainerOffer img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 16px;
+}
+.productDetailsOffer {
+  color: gray;
+}
+.productDetailsOffer:last-child {
+  padding-bottom: 40px;
+  border-bottom: rgb(219, 219, 219) solid 1px;
+}
+h4 {
+  margin-top: 40px;
+}
+.productDescription {
+  color: gray;
+}
+
+.buyButtonContainer {
+  display: block;
+  margin: auto;
+  background-color: #0bb0ba;
+  width: 320px;
+  height: 30px;
+  border-radius: 5px;
+  text-align: center;
+  color: white;
+}
