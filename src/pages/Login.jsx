@@ -13,13 +13,14 @@ const Login = ({ handleToken }) => {
     try {
       const response = await axios.post(
         "https://lereacteur-vinted-api.herokuapp.com/user/login",
-        { email, password }
+        { email: email, password: password }
       );
-      handleToken(response.data.value);
+      handleToken(response.data.token);
       navigate("/");
     } catch (error) {
       console.log(error);
     }
+    console.log(response.data);
   };
   return (
     <form className="signup-container" onSubmit={handleSubmit}>

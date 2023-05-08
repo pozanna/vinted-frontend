@@ -6,6 +6,7 @@ import Offer from "./pages/Offer";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Header from "./components/Header";
+import Publish from "./pages/Publish";
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Cookies from "js-cookie";
@@ -19,6 +20,7 @@ const App = () => {
       .get("https://lereacteur-vinted-api.herokuapp.com/offers")
       .then((response) => {
         setOffers(response.data);
+        console.log(response.data);
       })
       .catch((error) => {
         console.log(error);
@@ -42,6 +44,7 @@ const App = () => {
         <Route path="/offers/:id" element={<Offer />} />
         <Route path="/signup" element={<Signup handleToken={handleToken} />} />
         <Route path="/login" element={<Login handleToken={handleToken} />} />
+        <Route path="/publish" element={<Publish token={userToken} />} />
       </Routes>
     </Router>
   );

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import "../components/OfferCard.css";
+import "./Header.css";
 import vintedIcon from "../assets/img/vinted_logo.jpg";
 
 const Header = ({ handleToken, userToken }) => {
@@ -11,10 +11,11 @@ const Header = ({ handleToken, userToken }) => {
         </div>
         <form>
           <div className="search-label">
-            {/* <button className="search-button" type="submit">
-              Press here
-            </button> */}
-            <input className="search-input" type="search" />
+            <input
+              className="search-input"
+              type="search"
+              placeholder="Recherche des articles"
+            />
             {!userToken ? (
               <>
                 <Link to="/signup">
@@ -35,7 +36,9 @@ const Header = ({ handleToken, userToken }) => {
               </button>
             )}
           </div>
-          {/* <button className="sellButton">Vends tes articles</button> */}
+          <Link to="/publish">
+            <button className="sellButton">Vends tes articles</button>
+          </Link>
         </form>
       </header>
     </div>
