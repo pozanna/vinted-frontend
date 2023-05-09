@@ -1,0 +1,9 @@
+.paymentContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.stripeContainer {
+  width: 50%;
+}

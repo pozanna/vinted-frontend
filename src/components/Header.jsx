@@ -7,7 +7,9 @@ const Header = ({ handleToken, userToken }) => {
     <div className="container">
       <header>
         <div className="headerLogo">
-          <img src={vintedIcon} alt="Vinted logo" />
+          <Link to="/">
+            <img src={vintedIcon} alt="Vinted logo" />
+          </Link>
         </div>
         <form>
           <div className="search-label">
