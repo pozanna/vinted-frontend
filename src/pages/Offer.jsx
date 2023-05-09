@@ -4,11 +4,10 @@ import { useParams } from "react-router-dom";
 import "./Offer.css";
 import { Link } from "react-router-dom";
 
-const Offer = () => {
+const Offer = (token) => {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
-  const [loggedIn, setLoggedIn] = useState(false);
-  const [isAuthenticated, setIsAuthenticated] = useState(true);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const { id } = useParams();
   useEffect(() => {
@@ -17,7 +16,6 @@ const Offer = () => {
         const response = await axios.get(
           `https://lereacteur-vinted-api.herokuapp.com/offer/${id}`
         );
-        console.log(response.data);
         setData(response.data);
         setIsLoading(false);
       } catch (error) {
@@ -26,11 +24,10 @@ const Offer = () => {
     };
     fetchData();
   }, [id]);
+
   useEffect(() => {
-    const token = localStorage.getItem("userToken");
-    if (token) {
+    if (token.token) {
       setIsAuthenticated(true);
-      setLoggedIn(true);
     }
   }, [setIsAuthenticated]);
 
@@ -38,7 +35,7 @@ const Offer = () => {
     <p>Loading ...</p>
   ) : (
     <div className="containerOffer">
-      <div classname="productImageArea">
+      <div className="productImageArea">
         <img
           className="productImageOffer"
           src={data.product_image.secure_url}
@@ -49,16 +46,11 @@ const Offer = () => {
         <div className="whiteBoxAllInfo">
           <p className="offerPrice">{data.product_price} €</p>
           <div className="productDetailsOffer">
-            {/* I browse product_details */}
             {data.product_details.map((detail, index) => {
-              console.log(detail);
-              // I get the name of the detail key
               const keyName = Object.keys(detail)[0];
               return (
                 <div key={index} className="productDetailsOffer">
-                  {/* I display the name of the key */}
                   <span>{keyName} : </span>
-                  {/* and its contents */}
                   <span>{detail[keyName]}</span>
                 </div>
               );

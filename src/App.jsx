@@ -1,4 +1,5 @@
 import "./App.css";
+
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
@@ -27,7 +28,6 @@ const App = () => {
       .get("https://lereacteur-vinted-api.herokuapp.com/offers")
       .then((response) => {
         setOffers(response.data);
-        console.log(response.data);
       })
       .catch((error) => {
         console.log(error);
@@ -43,23 +43,39 @@ const App = () => {
       setUserToken(null);
     }
   };
+
+  const handleSearch = (value) => {
+    if (offers.offers) {
+      setOffers({
+        offers: offers.offers.filter((offer) =>
+          offer.product_name.includes(value)
+        ),
+      });
+    }
+  };
+
   return (
     <Router>
-      <Header handleToken={handleToken} userToken={userToken} />
+      <Header
+        handleToken={handleToken}
+        userToken={userToken}
+        handleSearch={handleSearch}
+      />
       <Routes>
         <Route path="/" element={<Home offers={offers.offers} />} />
-        <Route path="/offers/:id" element={<Offer />} />
+        <Route path="/offers/:id" element={<Offer token={userToken} />} />
         <Route path="/signup" element={<Signup handleToken={handleToken} />} />
         <Route path="/login" element={<Login handleToken={handleToken} />} />
         <Route path="/publish" element={<Publish token={userToken} />} />
         <Route
-          path="/payment/:state"
+          path="/payment"
           element={
             <Elements stripe={stripePromise}>
               <Payment token={userToken} />
             </Elements>
           }
         />
+        {/* path="/payment/:state" */}
       </Routes>
     </Router>
   );

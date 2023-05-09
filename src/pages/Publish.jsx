@@ -46,7 +46,6 @@ const Publish = ({ token }) => {
                 },
               }
             );
-            console.log(response.data);
           } catch (error) {
             console.log(error.message);
           }
@@ -100,7 +99,7 @@ const Publish = ({ token }) => {
               label="Taille"
               type="number"
               placeholder="ex: L/40/12"
-              tate={size}
+              state={size}
               setState={setSize}
             />
           </div>

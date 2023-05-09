@@ -1,6 +1,9 @@
+.uploadPictureContainer {
+  position: relative;
+}
 .publishContainer {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   width: 50vw;
   margin: auto;
@@ -14,13 +17,16 @@
   flex-direction: column;
   gap: 20px;
   width: 100%;
-  max-width: 500px; /* or adjust the max-width to your liking */
+  max-width: 500px;
 }
 
-.publishFieldContainer {
+.publishFieldContainer[type="text"],
+[type="number"],
+[type="submit"],
+[type="price"] {
   position: relative;
   width: 400px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   display: flex;
   flex-direction: row;
 }
@@ -31,22 +37,39 @@
   width: 100%;
   margin-left: 60px;
 }
-
+.publishFieldContainer label {
+  border: none;
+  width: 100%;
+  margin-right: 60px;
+}
 .publishFieldContainer h5 {
   text-align: left;
   margin: 0;
 }
-
-.uploadPictureContainer {
-  width: 100%;
+.uploadPictureContainer label:before {
+  content: "+";
+  font-weight: bold;
+  margin-right: 8px;
 }
-
-input[type="file"] {
+.uploadPictureContainer input[type="file"] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
   width: 100%;
+  height: 100%;
+  cursor: pointer;
 }
 
 input[type="submit"] {
   width: 100%;
-  max-width: 200px; /* or adjust the max-width to your liking */
+  max-width: 200px;
   margin: auto;
+}
+.uploadPictureContainer label {
+  display: inline-block;
+  border: 1px solid #ccc;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
 }

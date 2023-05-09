@@ -3,10 +3,11 @@ header {
   justify-content: space-between; /* aligns items to the left and right edges of the header */
   height: 80px;
   align-items: center;
+  margin-bottom: 10px;
 }
 .headerLogo img {
-  height: 30px;
-  margin-right: 10px;
+  height: 40px;
+  margin: 0 10px 0 20px;
   display: flex;
   align-items: center;
 }
@@ -41,12 +42,8 @@ button {
   border-style: solid;
   border-width: 1px;
   border-color: #39b1ba;
-  margin-left: 10px; /* add margin to separate buttons */
+  margin-left: 10px;
   color: #39b1ba;
-}
-
-.connectButton {
-  margin-left: 0; /* remove left margin from connect button */
 }
 
 .sellButton {

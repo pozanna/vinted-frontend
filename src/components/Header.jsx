@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import "./Header.css";
 import vintedIcon from "../assets/img/vinted_logo.jpg";
 
-const Header = ({ handleToken, userToken }) => {
+const Header = ({ handleToken, userToken, handleSearch }) => {
   return (
     <div className="container">
       <header>
@@ -14,6 +14,7 @@ const Header = ({ handleToken, userToken }) => {
         <form>
           <div className="search-label">
             <input
+              onChange={(event) => handleSearch(event.target.value)}
               className="search-input"
               type="search"
               placeholder="Recherche des articles"

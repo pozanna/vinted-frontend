@@ -60,7 +60,7 @@ const Signup = ({ handleToken }) => {
           setPassword(event.target.value);
         }}
       />
-      <div classname="checkBox">
+      <div className="checkBox">
         <input
           type="checkbox"
           checked={newsLetter}

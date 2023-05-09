@@ -20,7 +20,6 @@ const Login = ({ handleToken }) => {
     } catch (error) {
       console.log(error);
     }
-    console.log(response.data);
   };
   return (
     <form className="signup-container" onSubmit={handleSubmit}>
