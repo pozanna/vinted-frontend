@@ -7,7 +7,7 @@ import axios from "axios";
 import { loadStripe } from "@stripe/stripe-js";
 
 const stripePromise = loadStripe(
-  "pk_test_51HCObyDVswqktOkX6VVcoA7V2sjOJCUB4FBt3EOiAdSz5vWudpWxwcSY8z2feWXBq6lwMgAb5IVZZ1p84ntLq03H00LDVc2RwP"
+  "pk_test_51NEIVRALprE2xxeANeFYTgjzgukp2xyh6Cdx3i7KD7l872qx33rpYfc58xNFq8cBv0b32uDILhbcmZ3UJoc5k1LF00FNH15AlG"
 );
 
 const Payment = () => {
@@ -34,7 +34,7 @@ const Payment = () => {
       const stripeToken = stripeResponse.token.id;
 
       const responseFromBackend = await axios.post(
-        "https://lereacteur-vinted-api.herokuapp.com/payment",
+        "http://localhost:3000/payment",
         { stripeToken: stripeToken, title: title, amount: price }
       );
 
