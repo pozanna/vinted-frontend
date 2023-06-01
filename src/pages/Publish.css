@@ -1,6 +1,25 @@
 .uploadPictureContainer {
   position: relative;
+  width: 300px;
+  height: 80px;
+  /* border: solid green 2px; */
 }
+
+.thumbnailContainer {
+  display: flex;
+  overflow-x: auto;
+  gap: 10px;
+  width: 100%;
+  max-width: 300px;
+  margin-top: 10px;
+}
+
+.thumbnailContainer img {
+  width: 100px;
+  height: auto;
+  object-fit: cover;
+}
+
 .publishContainer {
   display: flex;
   flex-direction: column;

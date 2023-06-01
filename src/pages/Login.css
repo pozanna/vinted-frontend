@@ -1,0 +1,45 @@
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50vw;
+  margin: auto;
+  height: 70hv;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.login-container input {
+  width: 80%;
+}
+
+.inputEmail,
+.inputPassowrd {
+  width: 530px;
+  height: 38px;
+  background-color: #efefef;
+  border-color: transparent;
+  border-radius: 5px;
+  padding-left: 20px;
+  color: gray;
+}
+
+.submitButtom {
+  border-radius: 5px;
+  height: 28px;
+  width: 130px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #39b1ba;
+  margin-left: 10px;
+  color: #39b1ba;
+  display: flex;
+  justify-content: center;
+}
+.inscris-toi {
+  color: #39b1ba;
+}
+.inscris-toi-link {
+  color: #39b1ba;
+  text-decoration: none;
+}

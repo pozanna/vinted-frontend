@@ -1,13 +1,14 @@
 header {
   display: flex;
-  justify-content: space-between; /* aligns items to the left and right edges of the header */
+  justify-content: space-between;
   height: 80px;
+  width: 1200px;
   align-items: center;
   margin-bottom: 10px;
 }
 .headerLogo img {
-  height: 40px;
-  margin: 0 10px 0 20px;
+  height: 38px;
+  margin-left: 20px;
   display: flex;
   align-items: center;
 }
@@ -17,21 +18,22 @@ form {
 }
 
 .search-label {
+  width: 700px;
   position: relative;
-  padding: 0 20px 0 0; /* add right padding to separate the input and buttons */
+  /* padding: 0 150px 0 0; */
+  margin-right: 150px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
 }
 
 .search-input {
-  width: 630px;
-  height: 35px;
+  width: 530px;
+  height: 38px;
   background-color: #efefef;
   border-color: transparent;
   border-radius: 5px;
-  padding-left: 40px;
+  padding-left: 20px;
   color: gray;
 }
 
@@ -48,7 +50,7 @@ button {
 
 .sellButton {
   background-color: #39b1ba;
-  margin-right: 40px; /* add right margin to separate from right edge of header */
+  margin-right: 40px;
   color: white;
   width: 160px;
 }

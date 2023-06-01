@@ -13,9 +13,7 @@ const Offer = (token) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          `https://lereacteur-vinted-api.herokuapp.com/offer/${id}`
-        );
+        const response = await axios.get(`http://localhost:3000/offer/${id}`);
         setData(response.data);
         setIsLoading(false);
       } catch (error) {
@@ -65,13 +63,8 @@ const Offer = (token) => {
           <button className="buyButtonContainer">
             {isAuthenticated ? (
               <Link
-                to={{
-                  pathname: "/payment",
-                  state: {
-                    title: data.product_name,
-                    price: data.product_price,
-                  },
-                }}
+                to="/payment"
+                state={{ title: data.product_name, price: data.product_price }}
               >
                 Acheter
               </Link>

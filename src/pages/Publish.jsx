@@ -5,70 +5,94 @@ import InputPublish from "../components/InputPublish";
 import { Navigate } from "react-router-dom";
 
 const Publish = ({ token }) => {
-  const [errorMessage, setErrorMessage] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState(0);
   const [condition, setCondition] = useState("");
   const [city, setCity] = useState("");
   const [brand, setBrand] = useState("");
-  const [size, setSize] = useState();
+  const [size, setSize] = useState("");
   const [color, setColor] = useState("");
-  const [picture, setPicture] = useState("");
+  const [pictures, setPictures] = useState([]);
 
-  console.log(token);
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const formData = new FormData();
+      formData.append("title", title);
+      formData.append("description", description);
+      formData.append("price", price);
+      formData.append("condition", condition);
+      formData.append("city", city);
+      formData.append("brand", brand);
+      formData.append("size", size);
+      formData.append("color", color);
+
+      for (let i = 0; i < pictures.length; i++) {
+        formData.append("picture", pictures[i]);
+      }
+
+      const response = await axios.post(
+        "http://localhost:3000/offer/publish",
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      console.log(response.data);
+
+      setTitle("");
+      setDescription("");
+      setPrice(0);
+      setCondition("");
+      setCity("");
+      setBrand("");
+      setSize("");
+      setColor("");
+      setPictures([]);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+  const handlePictureChange = (event) => {
+    const fileList = event.target.files;
+    const newPictures = Array.from(fileList);
+    setPictures(newPictures);
+  };
+
   return token ? (
     <div className="publishContainer">
-      <h2>Vends ton article </h2>
-      <form
-        className="publishForm"
-        onSubmit={async (event) => {
-          event.preventDefault();
-          setErrorMessage("");
-          try {
-            const formData = new FormData();
-            formData.append("title", title);
-            formData.append("description", description);
-            formData.append("price", price);
-            formData.append("condition", condition);
-            formData.append("city", city);
-            formData.append("brand", brand);
-            formData.append("size", size);
-            formData.append("color", color);
-            formData.append("picture", picture);
-            const response = await axios.post(
-              "https://lereacteur-vinted-api.herokuapp.com/offer/publish",
-              formData,
-              {
-                headers: {
-                  Authorization: `Bearer ${token}`,
-                  "Content-Type": "multipart/form-data",
-                },
-              }
-            );
-          } catch (error) {
-            console.log(error.message);
-          }
-        }}
-      >
+      <h2>Vends ton article</h2>
+      <form onSubmit={handleSubmit} className="publishForm">
         <div>
           <div className="uploadPictureContainer">
-            <label htmlFor="file">Ajoute une photo</label>
+            <label htmlFor="file">Ajoute des photos</label>
             <input
               style={{ display: "none" }}
               id="file"
               type="file"
-              onChange={(event) => {
-                setPicture(event.target.files[0]);
-              }}
+              multiple
+              onChange={handlePictureChange}
             />
           </div>
-          {picture && <img src={URL.createObjectURL(picture)} alt="product" />}
+          <div className="thumbnailContainer">
+            {pictures.map((picture, index) => (
+              <img
+                key={index}
+                src={URL.createObjectURL(picture)}
+                alt={`Product Thumbnail ${index}`}
+                className="thumbnail"
+              />
+            ))}
+          </div>
         </div>
         <div>
           <div className="publishFieldContainer">
             <InputPublish
-              label="Titre"
+              label="Title"
               type="text"
               placeholder="ex: chemise Zara verte"
               state={title}
@@ -133,16 +157,18 @@ const Publish = ({ token }) => {
           <div className="publishFieldContainer">
             <InputPublish
               label="Prix"
-              type="price"
+              type="number"
               placeholder="ex: 0.00 €"
               state={price}
               setState={setPrice}
             />
           </div>
-          <input type="checkbox" onChange={() => {}} />{" "}
-          <p>Je suis intéressé(e) par les échanges</p>
+          <div className="publishFieldContainer">
+            <input type="checkbox" onChange={() => {}} />
+            <p>Je suis intéressé(e) par les échanges</p>
+          </div>
+          <input type="submit" value="Ajouter" />
         </div>
-        <input type="submit" value="Ajouter" />
       </form>
     </div>
   ) : (

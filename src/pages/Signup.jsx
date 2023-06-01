@@ -14,15 +14,12 @@ const Signup = ({ handleToken }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post(
-        "https://lereacteur-vinted-api.herokuapp.com/user/signup",
-        {
-          username,
-          email,
-          password,
-          newsLetter: newsLetter,
-        }
-      );
+      const response = await axios.post("http://localhost:3000/user/signup", {
+        username,
+        email,
+        password,
+        newsLetter: newsLetter,
+      });
 
       handleToken(response.data.token);
       navigate("/");
@@ -37,6 +34,7 @@ const Signup = ({ handleToken }) => {
     <form className="signup-container" onSubmit={handleSubmit}>
       <h1>S'insrire</h1>
       <input
+        className="inputName"
         type="text"
         placeholder="Nome d'utilisateur "
         value={username}
@@ -45,6 +43,7 @@ const Signup = ({ handleToken }) => {
         }}
       />
       <input
+        className="inputEmail"
         type="text"
         placeholder="Email"
         value={email}
@@ -53,6 +52,7 @@ const Signup = ({ handleToken }) => {
         }}
       />
       <input
+        className="inputPassowrd"
         type="text"
         placeholder="Mot de passe"
         value={password}
@@ -67,15 +67,17 @@ const Signup = ({ handleToken }) => {
           onChange={() => {
             setNewsLetter(!newsLetter);
           }}
-        />{" "}
-        <h3> S'inscrire à notre newsletter</h3>
-        <p>
-          En m'inscrivant je confirme avoir lu et accepté les Termes &
-          Conditions et Politique de Confidentialité de Vinted. Je confirme
-          avoir au moins 18 ans.
-        </p>
+        />
+        <div className="newsletter">
+          <p className="newsletterTitle"> S'inscrire à notre newsletter</p>
+          <p className="newsletterCondition">
+            En m'inscrivant je confirme avoir lu et accepté les Termes &
+            Conditions et Politique de Confidentialité de Vinted. Je confirme
+            avoir au moins 18 ans.
+          </p>
+        </div>
       </div>
-      <input type="submit" value="S'inscrire" />
+      <input className="submitButtom" type="submit" value="S'inscrire" />
     </form>
   );
 };

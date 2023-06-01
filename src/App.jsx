@@ -6,7 +6,6 @@ import Cookies from "js-cookie";
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { loadStripe } from "@stripe/stripe-js";
-import { Elements } from "@stripe/react-stripe-js";
 
 //pages
 import Home from "./pages/Home";
@@ -16,6 +15,7 @@ import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Publish from "./pages/Publish";
 import Payment from "./pages/Payment";
+import { Elements } from "@stripe/react-stripe-js";
 
 const App = () => {
   const [userToken, setUserToken] = useState(Cookies.get("userToken") || null);
@@ -25,7 +25,7 @@ const App = () => {
   );
   useEffect(() => {
     axios
-      .get("https://lereacteur-vinted-api.herokuapp.com/offers")
+      .get("http://localhost:3000/offers")
       .then((response) => {
         setOffers(response.data);
       })
@@ -55,29 +55,33 @@ const App = () => {
   };
 
   return (
-    <Router>
-      <Header
-        handleToken={handleToken}
-        userToken={userToken}
-        handleSearch={handleSearch}
-      />
-      <Routes>
-        <Route path="/" element={<Home offers={offers.offers} />} />
-        <Route path="/offers/:id" element={<Offer token={userToken} />} />
-        <Route path="/signup" element={<Signup handleToken={handleToken} />} />
-        <Route path="/login" element={<Login handleToken={handleToken} />} />
-        <Route path="/publish" element={<Publish token={userToken} />} />
-        <Route
-          path="/payment"
-          element={
-            <Elements stripe={stripePromise}>
-              <Payment token={userToken} />
-            </Elements>
-          }
+    <div className="container">
+      <Router>
+        <Header
+          handleToken={handleToken}
+          userToken={userToken}
+          handleSearch={handleSearch}
         />
-        {/* path="/payment/:state" */}
-      </Routes>
-    </Router>
+        <Routes>
+          <Route path="/" element={<Home offers={offers.offers} />} />
+          <Route path="/offers/:id" element={<Offer token={userToken} />} />
+          <Route
+            path="/signup"
+            element={<Signup handleToken={handleToken} />}
+          />
+          <Route path="/login" element={<Login handleToken={handleToken} />} />
+          <Route path="/publish" element={<Publish token={userToken} />} />
+          <Route
+            path="/payment"
+            element={
+              <Elements stripe={stripePromise}>
+                <Payment token={userToken} />
+              </Elements>
+            }
+          />
+        </Routes>
+      </Router>
+    </div>
   );
 };
 

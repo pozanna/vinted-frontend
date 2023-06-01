@@ -10,12 +10,49 @@
 }
 
 .signup-container input {
-  width: 50%;
+  width: 80%;
+}
+.inputName,
+.inputEmail,
+.inputPassowrd {
+  width: 530px;
+  height: 38px;
+  background-color: #efefef;
+  border-color: transparent;
+  border-radius: 5px;
+  padding-left: 20px;
+  color: gray;
 }
 
 .signup-container .checkBox {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  width: 50%;
+  /* background-color: bisque; */
+  width: 86%;
+}
+.checkBox {
+  background-color: plum;
+  display: flex;
+}
+.newsletterTitle {
+  /* background-color: palegreen; */
+  font-size: 14px;
+  /* font-weight: bold */
+}
+.newsletterCondition {
+  font-size: 10px;
+  color: rgb(0, 0, 0);
+}
+.submitButtom {
+  border-radius: 5px;
+  height: 28px;
+  width: 130px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #39b1ba;
+  margin-left: 10px;
+  color: #39b1ba;
+  display: flex;
+  justify-content: center;
 }

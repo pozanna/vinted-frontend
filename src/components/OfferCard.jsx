@@ -20,8 +20,8 @@ const OfferCard = ({ offerData }) => {
   return (
     <div key={_id} className="offer-card" onClick={() => handleClick(_id)}>
       <div className="userInfoContainer">
-        <img src={owner.account.avatar?.url}></img>
-        <p>{owner.account.username}</p>
+        {/* <img src={owner.account.avatar?.url}></img> */}
+        {/* <p>{owner.account.username}</p> */}
       </div>
       <div className="mainItemImage">
         <img src={product_image.secure_url} alt={product_name} />
